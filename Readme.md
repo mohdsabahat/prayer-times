@@ -9,6 +9,7 @@ Based on `PrayTimes.js`: Prayer Times Calculator (ver 2.3)
 
 In future major versions, this library will undergo a significant refactor to enhance usability and performance. The planned improvements include:
 
+- [ ] Documentation for v1 [In Progress]
 - Modernized codebase with better TypeScript support
 - Improved API design for easier integration
 - Enhanced documentation and examples

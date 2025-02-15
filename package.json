@@ -6,6 +6,7 @@
   "scripts": {
     "build:browser": "webpack --config webpack.browser.js",
     "build:node": "webpack --config webpack.node.js",
+    "build:docs": "typedoc",
     "start:browser": "webpack serve --config webpack.browser.js",
     "start:node": "node dist/bundle.node.js",
     "test": "jest"
@@ -31,6 +32,7 @@
     "source-map-loader": "^5.0.0",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
+    "typedoc": "^0.27.7",
     "typescript": "^5.7.3",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1",
