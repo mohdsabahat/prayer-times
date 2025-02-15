@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     library: {
-      name: 'MyLibrary', // Name of the global object that will hold your class
+      name: 'PrayerUtils', // Name of the global object that will hold your class
       type: 'umd',       // Universal Module Definition, works for both Node and browser
     },
   },

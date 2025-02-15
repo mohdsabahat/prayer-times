@@ -1,7 +1,7 @@
 {
-  "name": "prayertimes",
+  "name": "prayerutils",
   "version": "1.0.0",
-  "description": "A library to calculate prayer times.",
+  "description": "A library to calculate prayer times and other Islamic utilities",
   "main": "./src/index.ts",
   "scripts": {
     "build:browser": "webpack --config webpack.browser.js",

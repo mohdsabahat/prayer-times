@@ -6,8 +6,10 @@
   <title>Webpack TypeScript Browser Test</title>
 </head>
 <body>
-  <h1>Webpack + TypeScript + Babel in the Browser</h1>
-  <button id="greetButton">Click to Greet</button>
+  <h1>Prayer Times Test</h1>
+  <button id="greetButton">Click to Calculate Prayer Times for today</button>
+  <div id="date"></div>
+  <div id="times"></div>
 
   <script src="dist/bundle.js"></script> <!-- This loads the Webpack bundle -->
   <script>
@@ -16,8 +18,18 @@
       const greetButton = document.getElementById('greetButton');
       if (greetButton) {
         greetButton.addEventListener('click', () => {
-          let x = new MyLibrary.MyClass('Browser');
-          x.greet();  // Alert with the greeting from the class
+            let PT = new PrayerUtils.PrayerTimes('Karachi');
+            PT.adjustAsrMethod('Hanafi');
+            const today = new Date();
+            let times = PT.getTimes(today, [18.4064, 66.6222], 5);
+            // Print times in html in table
+            let table = '<table style="border: 1px solid black; border-collapse: collapse;">';
+            for (var i in times) {
+              table += '<tr><td>' + i + '</td><td>' + times[i] + '</td></tr>';
+            }
+            table += '</table>';
+            document.getElementById('times').innerHTML = table;
+            document.getElementById('date').innerHTML = `<div>Showing Prayer Times for date: ${today.toDateString()}</div>`;
         });
       }
     };

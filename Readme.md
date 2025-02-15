@@ -1,11 +1,26 @@
+![Release](https://github.com/mohdsabahat/prayer-times/actions/workflows/release.yml/badge.svg)
+![License](https://img.shields.io/badge/license-LGPLv3-green.svg)
+
 # Prayer Times Calculator
 
-> **Note:** This README is based on the original documentation from PrayTimes.js. It will be updated in the future to reflect changes specific to this port.
-PrayTimes.js: Prayer Times Calculator (ver 2.3)
+Based on `PrayTimes.js`: Prayer Times Calculator (ver 2.3)
+
+## Future Plans
+
+In future major versions, this library will undergo a significant refactor to enhance usability and performance. The planned improvements include:
+
+- Modernized codebase with better TypeScript support
+- Improved API design for easier integration
+- Enhanced documentation and examples
+- Additional features and customization options
+
+Stay tuned for updates and new releases!
 
 ## Overview
 
-PrayTimes.js is a JavaScript library for calculating Islamic prayer times. It is developed by Hamid Zarrabi-Zadeh and is distributed under the GNU LGPL v3.0 license.
+PrayTimes.js is originally a JavaScript library for calculating Islamic prayer times. It is developed by Hamid Zarrabi-Zadeh and is distributed under the GNU LGPL v3.0 license.
+
+> This Typescript port by [mohdsabahat](https://github.com/mohdsabahat)
 
 ## Features
 
@@ -16,10 +31,10 @@ PrayTimes.js is a JavaScript library for calculating Islamic prayer times. It is
 
 ## Installation
 
-To use PrayTimes.js in your project, include the library in your HTML file:
+To use PrayerTimes in your project, include the library in your HTML file:
 
 ```html
-<script src="path/to/PrayTimes.js"></script>
+<script src="path/to/build.js"></script>
 ```
 
 ## Usage
@@ -27,9 +42,9 @@ To use PrayTimes.js in your project, include the library in your HTML file:
 ### Basic Usage
 
 ```javascript
-var PT = new PrayTimes('ISNA');
+let PT = new PrayerUtils.PrayerTimes('Karachi');
 var times = PT.getTimes(new Date(), [43, -80], -5);
-document.write('Sunrise = ' + times.sunrise);
+console.log('Sunrise = ' + times.sunrise);
 ```
 
 ### Methods
@@ -41,6 +56,7 @@ document.write('Sunrise = ' + times.sunrise);
 - `getMethod()` - Get calculation method
 - `getSetting()` - Get current calculation parameters
 - `getOffsets()` - Get current time offsets
+- `adjustAsrMethod()` - Adjust Asr calculation method, accepted values ['Standard', 'Hanafi']
 
 ## Documentation
 

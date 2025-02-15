@@ -20,46 +20,10 @@ PLEASE DO NOT REMOVE THIS COPYRIGHT BLOCK.
 
 */
 
-
-//--------------------- Help and Manual ----------------------
-/*
-
-User's Manual:
-http://praytimes.org/manual
-
-Calculation Formulas:
-http://praytimes.org/calculation
-
-
-
-//------------------------ User Interface -------------------------
-
-
-	getTimes (date, coordinates [, timeZone [, dst [, timeFormat]]])
-
-	setMethod (method)       // set calculation method
-	adjust (parameters)      // adjust calculation parameters
-	tune (offsets)           // tune times by given offsets
-
-	getMethod ()             // get calculation method
-	getSetting ()            // get current calculation parameters
-	getOffsets ()            // get current time offsets
-
-
-//------------------------- Sample Usage --------------------------
-
-
-	var PT = new PrayTimes('ISNA');
-	var times = PT.getTimes(new Date(), [43, -80], -5);
-	document.write('Sunrise = '+ times.sunrise)
-
-
-*/
-
 import DMath from "./utils/DMath";
 import { MethodParams, Methods, Setting, TimeNames, Times } from "./types";
 
-export default class PrayTimes {
+export default class PrayerTimes {
     private readonly timeNames: TimeNames;
     private readonly methods: Methods;
     private readonly defaultParams: { [key: string]: string };
