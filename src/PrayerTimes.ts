@@ -43,6 +43,29 @@ export default class PrayerTimes {
     private timeZone: number;
     private jDate: number;
 
+    /**
+     * Constructs a new instance of the PrayerTimes class.
+     * 
+     * @param method - The calculation method to use for prayer times. 
+     *                 If the provided method is not found, the default method 'MWL' will be used.
+     * 
+     * Initializes the following properties:
+     * - `timeNames`: An object containing the names of the prayer times.
+     * - `methods`: An object containing different calculation methods and their parameters.
+     * - `defaultParams`: Default parameters for maghrib and midnight.
+     * - `calcMethod`: The calculation method to use, default is 'MWL'.
+     * - `setting`: An object containing settings for imsak, dhuhr, asr, and high latitude adjustments.
+     * - `timeFormat`: The format of the time, default is '24h'.
+     * - `timeSuffixes`: An array containing time suffixes 'am' and 'pm'.
+     * - `invalidTime`: A string representing an invalid time, default is '-----'.
+     * - `numIterations`: The number of iterations for calculation, default is 1.
+     * - `offset`: An object containing offsets for each prayer time, initialized to 0.
+     * - `lat`, `lng`, `elv`, `timeZone`, `jDate`: Geographical and time-related properties, initialized to 0.
+     * 
+     * Sets the default parameters for each method if not already defined.
+     * Initializes the settings based on the selected calculation method.
+     * Initializes the time offsets for each prayer time to 0.
+     */
     constructor(method: string) {
         this.timeNames = {
             imsak: 'Imsak',
@@ -137,14 +160,32 @@ export default class PrayerTimes {
     }
 
     // set calculation method
+    /**
+     * Sets the calculation method for prayer times.
+     * 
+     * @param method - The name of the calculation method to set. 
+     *                 This should be a key in the `methods` object.
+     * 
+     * @remarks
+     * If the provided method exists in the `methods` object, 
+     * this function will adjust the prayer times parameters 
+     * according to the specified method and update the 
+     * `calcMethod` property.
+     */
     setMethod(method: string): void {
-        if (this.methods[method]) {
-            this.adjust(this.methods[method].params);
-            this.calcMethod = method;
+        if (!this.methods[method]) {
+            throw new Error(`Invalid method: ${method}. Please provide a valid calculation method.`);
         }
+        this.adjust(this.methods[method].params);
+        this.calcMethod = method;
     }
 
     // set calculating parameters
+    /**
+     * Adjusts the prayer time settings based on the provided parameters.
+     *
+     * @param params - An object containing the method parameters to adjust the settings.
+     */
     adjust(params: MethodParams): void {
         for (const id in params) {
             this.setting[id] = params[id];
@@ -179,6 +220,16 @@ export default class PrayerTimes {
     }
 
     // return prayer times for a given date
+    /**
+     * Calculates prayer times for a given date, coordinates, and optional timezone and daylight saving time (DST) settings.
+     *
+     * @param date - The date for which to calculate prayer times. Can be a Date object or an array of numbers [year, month, day].
+     * @param coords - The geographical coordinates [latitude, longitude, elevation] for the location.
+     * @param timezone - The timezone offset from UTC. Can be a number or 'auto' to automatically determine the timezone. Defaults to 'auto'.
+     * @param dst - The daylight saving time setting. Can be a number (0 or 1) or 'auto' to automatically determine DST. Defaults to 'auto'.
+     * @param format - The format for the prayer times. Defaults to the instance's timeFormat.
+     * @returns An object containing the calculated prayer times.
+     */
     getTimes(date: Date | number[], coords: number[], timezone?: number | 'auto', dst?: number | 'auto', format?: string): Times {
         this.lat = coords[0];
         this.lng = coords[1];
