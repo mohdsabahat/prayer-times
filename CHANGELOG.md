@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/mohdsabahat/prayer-times/compare/v1.1.0...v1.2.0) (2025-02-15)
+
+
+### Features
+
+* **prayer-times:** enhance documentation for constructor and methods in PrayerTimes class ([23bbafe](https://github.com/mohdsabahat/prayer-times/commit/23bbafea5c03fe0458c99257404fa48bd6d0f5ad))
+
 # [1.1.0](https://github.com/mohdsabahat/prayer-times/compare/v1.0.0...v1.1.0) (2025-02-15)
 
 
