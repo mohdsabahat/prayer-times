@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webpack TypeScript Browser Test</title>
+</head>
+<body>
+  <h1>Webpack + TypeScript + Babel in the Browser</h1>
+  <button id="greetButton">Click to Greet</button>
+
+  <script src="dist/bundle.js"></script> <!-- This loads the Webpack bundle -->
+  <script>
+    // Ensure the class is available as MyLibrary.MyClass
+    window.onload = () => {
+      const greetButton = document.getElementById('greetButton');
+      if (greetButton) {
+        greetButton.addEventListener('click', () => {
+          let x = new MyLibrary.MyClass('Browser');
+          x.greet();  // Alert with the greeting from the class
+        });
+      }
+    };
+  </script>
+</body>
+</html>

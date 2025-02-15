@@ -1,0 +1,33 @@
+{
+  "ignore": ["src/**/*.spec.ts", "src/**/*.spec.js"],
+  "env": {
+    "esmUnbundled": {
+      "presets": ["@babel/typescript"]
+    },
+    "esmBundled": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": "> 0.25%, not dead"
+          }
+        ],
+        "@babel/typescript"
+      ]
+    },
+    "cjs": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": "commonjs"
+          }
+        ],
+        "@babel/typescript"
+      ]
+    },
+    "test": {
+      "presets": ["@babel/preset-env", "@babel/typescript"]
+    }
+  }
+}
