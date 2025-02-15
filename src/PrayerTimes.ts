@@ -23,6 +23,9 @@ PLEASE DO NOT REMOVE THIS COPYRIGHT BLOCK.
 import DMath from "./utils/DMath";
 import { MethodParams, Methods, Setting, TimeNames, Times } from "./types";
 
+/**
+ * Class representing prayer times calculation.
+ */
 export default class PrayerTimes {
     private readonly timeNames: TimeNames;
     private readonly methods: Methods;
@@ -337,7 +340,16 @@ export default class PrayerTimes {
         return times;
     }
 
-    adjustAsrMethod(asrParam: "Standard" | "Hanafi"){
+    /**
+     * Adjusts the Asr calculation method.
+     * 
+     * @param asrParam - The Asr calculation method, either "Standard" or "Hanafi".
+     * @throws Will throw an error if the asrParam is not "Standard" or "Hanafi".
+     */
+    adjustAsrMethod(asrParam: "Standard" | "Hanafi") {
+        if (asrParam !== "Standard" && asrParam !== "Hanafi") {
+            throw new Error(`Invalid asrParam value: ${asrParam}. Allowed values are "Standard" and "Hanafi".`);
+        }
         this.setting.asr = asrParam;
     }
 

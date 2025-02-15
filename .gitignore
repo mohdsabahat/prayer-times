@@ -38,3 +38,4 @@ Thumbs.db
 # Compiled binaries
 /dist
 /build
+/docs
