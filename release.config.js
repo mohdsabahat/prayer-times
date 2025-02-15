@@ -8,9 +8,10 @@ module.exports = {
         [
             "@semantic-release/github",
             {
-                "assets": "dist/*.tgz"
+                "assets": [
+                    { "path": "dist/**", "label": "Build files" }
+                ]
             }
         ]
     ]
-  };
-  
+};
